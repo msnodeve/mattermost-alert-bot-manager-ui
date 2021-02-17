@@ -4,7 +4,7 @@
       <div class="logo"></div>
       <div class="form">
         <input v-mode="msg" />
-        <button @click="submit">Submit</button>
+        <button @click="postNoti">Submit</button>
       </div>
     </div>
   </div>
@@ -20,9 +20,8 @@ export default {
     };
   },
   methods: {
-    submit() {
-      console.log(API);
-      this.$axios.post(API.post_msg, {});
+    postNoti() {
+      this.$axios.post(API.noti_url, {});
     },
   },
 };

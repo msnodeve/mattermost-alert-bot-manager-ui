@@ -1,4 +1,4 @@
 const BASE_URL = "https://t4coach33.p.ssafy.io/api";
-const post_msg = BASE_URL + "/";
+const noti_url = BASE_URL + "/v1/noti";
 
-export { post_msg };
+export { noti_url };
