@@ -2,10 +2,23 @@
   <div class="main">
     <div class="container">
       <div class="logo"></div>
-      <div class="form">
-        <input v-mode="msg" />
-        <button @click="postNoti">Submit</button>
-      </div>
+      <section>
+        <div class="form">
+          <input v-model="msg" type="text" />
+          <button @click="postNoti">Submit</button>
+        </div>
+        <div class="list">
+          <div class="list-title">
+            <h2>Notifications</h2>
+            <input type="text" v />
+          </div>
+          <div class="list-content">
+            <div class="list-item" v-for="item in list" :key="item.idx">
+              {{ item }}
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   </div>
 </template>
@@ -17,11 +30,25 @@ export default {
   data() {
     return {
       msg: "",
+      list: [],
     };
   },
+  created() {
+    this.getNoti();
+  },
   methods: {
+    getNoti() {
+      this.$axios
+        .get(API.NOTI)
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
     postNoti() {
-      this.$axios.post(API.noti_url, {});
+      this.$axios.post(API.NOTI, {});
     },
   },
 };
@@ -42,7 +69,7 @@ export default {
 }
 .container {
   max-width: 750px;
-  min-height: 400px;
+  min-height: 700px;
   margin: auto;
   padding: 30px;
 }
@@ -68,6 +95,32 @@ export default {
   width: 120px;
   color: white;
   background: #051937;
+  border-radius: 36px;
+  margin: 6px;
+}
+
+.list {
+  /* color: white; */
+  background: white;
+  border-radius: 36px;
+  padding: 20px;
+  min-height: 100px;
+}
+.list > .list-title {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+}
+.list > .list-title > h2 {
+  margin: 0px;
+}
+.list > .list-title > input {
+  height: 30px;
+  line-height: 30px;
+}
+.list > .list-item {
+  color: black;
+  background: white;
   border-radius: 36px;
   margin: 6px;
 }
