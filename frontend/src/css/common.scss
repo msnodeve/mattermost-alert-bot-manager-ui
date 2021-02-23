@@ -5,6 +5,10 @@
 input {
   border: 0;
 }
+i {
+  cursor: pointer;
+}
+
 .d-flex {
   display: flex;
   justify-content: space-between;
@@ -21,4 +25,103 @@ input {
   margin: 0 0.5rem;
   padding: 6px 12px;
   border-radius: 18px;
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+
+  .modal-content {
+    color: black;
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 30px;
+    border: 1px solid #888;
+    width: 700px; /* Could be more or less, depending on screen size */
+  }
+}
+
+.list {
+  color: white;
+  background: rgba(0, 0, 0, 0.4);
+  width: 45%;
+  min-height: 100px;
+
+  padding: 30px;
+  margin-bottom: 50px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 36px;
+
+  .form {
+    height: 30px;
+    background: white;
+    // background: rgba(100, 100, 150, 0.5);
+    color: white;
+    button {
+      width: 30px;
+      margin: 0px;
+      border: 0px;
+    }
+    input {
+      border-radius: 16px;
+      // background: rgba(0, 0, 0, 0.4);
+    }
+  }
+  .list-title {
+    display: flex;
+    justify-content: space-between;
+    // padding: 12px;
+    h2 {
+      margin: 0;
+      margin-bottom: 15px;
+    }
+    input {
+      height: 30px;
+      line-height: 30px;
+      border-radius: 36px;
+      margin-right: 6px;
+    }
+  }
+  .list-item {
+    display: flex;
+    // color: black;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    margin: 12px 0px;
+    padding: 12px;
+  }
+}
+
+.form {
+  display: flex;
+  background: white;
+  height: 50px;
+  width: 80%;
+
+  padding: 6px;
+  margin: 20px auto;
+  border-radius: 18px;
+
+  input {
+    width: 80%;
+    margin: 0 8px;
+    padding: 0 8px;
+    border: 0;
+    /* border-radius: 36px; */
+  }
+  button {
+    width: 120px;
+    color: white;
+    background: #051937;
+    border-radius: 36px;
+    margin: 6px;
+  }
 }

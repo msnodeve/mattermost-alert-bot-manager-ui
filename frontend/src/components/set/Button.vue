@@ -12,12 +12,19 @@ export default {
       type: String,
       default: "",
     },
+    width: {
+      type: String,
+      default: "40px",
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.button {
-  width: 40px;
+// .button {
+//   width: 40px;
+// }
+button {
+  cursor: pointer;
 }
 </style>

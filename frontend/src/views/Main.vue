@@ -2,52 +2,26 @@
   <div class="main">
     <div class="container">
       <div>
-        <section>
-          <div class="w-auto list">
-            <div class="list-title">
-              <h2>One-time Send</h2>
-            </div>
-            <div class="list-content2">
-              <div>
-                <Textarea
-                  v-model="inputValue.onetime.message"
-                  title="Message"
-                  placeholder="[안내] 오전 live 방송 참여해주세요!"
-                  rows="6"
-                />
-              </div>
-              <div>
-                <span>Urls</span>
-                <div v-for="item in url.list" :key="item.id">
-                  <input
-                    v-model="inputValue.onetime.urlIds"
-                    type="checkbox"
-                    :value="item.urlId"
-                  />
-                  <label> {{ item.urlAlias }}</label>
-                </div>
-              </div>
-              <Button @click.native="postOneTime" title="send" />
-            </div>
-          </div>
-        </section>
-
+        <Onetime :inputValue="inputValue" :url="url" />
         <section class="w-auto list">
           <div class="list-title">
-            <h2>Groups</h2>
+            <h2>알림 목록</h2>
+            <div class="d-flex">
+              <Button @click.native="openModalGroups" title="새 알림 만들기" />
+            </div>
           </div>
           <Searchbar />
           <div class="list-content">
             <div class="list-item" v-for="item in group.list" :key="item.id">
               <div class="flex-col">
-                {{ item.groupId }} ({{ item.time }}) |
-                {{ item.matterMostNotification.message }}
-                ----
-                {{ item.matterMostUrl.urlAlias }}
+                [시간] - {{ item.time }}<br />
+                [채널] - {{ item.matterMostUrl.urlAlias }}<br />
+                [내용] - {{ item.matterMostNotification.message }}
               </div>
             </div>
           </div>
-          <div class="d-flex">
+          <Groups :inputValue="inputValue" :noti="noti" :url="url" />
+          <!-- <div class="d-flex">
             <div>
               <span>Notifications</span>
               <div v-for="item in noti.list" :key="item.id">
@@ -77,8 +51,8 @@
                 placeholder="17:55"
               />
             </div>
-          </div>
-          <Button @click.native="postGroup" title="send" />
+            <Button @click.native="postGroup" title="send" />
+          </div> -->
         </section>
 
         <div class="d-flex">
@@ -139,6 +113,8 @@
 
 <script>
 import * as API from "@/api/api.js";
+import Onetime from "@/views/Onetime.vue";
+import Groups from "@/views/Groups.vue";
 import Textarea from "@/components/set/Textarea.vue";
 import Button from "@/components/set/Button.vue";
 import Searchbar from "@/components/set/Searchbar.vue";
@@ -150,6 +126,8 @@ export default {
     this.getGroup();
   },
   components: {
+    Onetime,
+    Groups,
     Textarea,
     Button,
     Searchbar,
@@ -185,7 +163,10 @@ export default {
     };
   },
   methods: {
-    checked() {},
+    openModalGroups() {
+      const $groups = document.getElementById("modal-groups");
+      $groups.style.display = "block";
+    },
     getGroup() {
       this.$axios
         .get(API.GROUP)
@@ -248,7 +229,6 @@ export default {
       this.inputValue.url.urlAlias = "";
     },
     postOneTime() {
-      console.log(this.inputValue.onetime.urlIds);
       const qs = require("qs");
       this.$axios
         .post(
@@ -303,85 +283,9 @@ export default {
   }
 }
 .container {
-  max-width: 1000px;
+  max-width: 750px;
   min-height: 1000px;
   margin: auto;
   padding: 150px 30px;
-}
-
-.form {
-  display: flex;
-  background: white;
-  height: 50px;
-  width: 80%;
-
-  padding: 6px;
-  margin: 20px auto;
-  border-radius: 18px;
-
-  input {
-    width: 80%;
-    margin: 0 8px;
-    padding: 0 8px;
-    border: 0;
-    /* border-radius: 36px; */
-  }
-  button {
-    width: 120px;
-    color: white;
-    background: #051937;
-    border-radius: 36px;
-    margin: 6px;
-  }
-}
-.list {
-  color: white;
-  background: rgba(0, 0, 0, 0.4);
-  width: 45%;
-  min-height: 100px;
-
-  padding: 30px;
-  margin-bottom: 50px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border-radius: 36px;
-
-  .form {
-    height: 30px;
-    background: white;
-    // background: rgba(100, 100, 150, 0.5);
-    color: white;
-    button {
-      width: 30px;
-      margin: 0px;
-      border: 0px;
-    }
-    input {
-      border-radius: 16px;
-      // background: rgba(0, 0, 0, 0.4);
-    }
-  }
-  .list-title {
-    display: flex;
-    justify-content: space-between;
-    // padding: 12px;
-    h2 {
-      margin: 0;
-      margin-bottom: 30px;
-    }
-    input {
-      height: 30px;
-      line-height: 30px;
-      border-radius: 36px;
-      margin-right: 6px;
-    }
-  }
-  .list-item {
-    display: flex;
-    // color: black;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-    margin: 12px 0px;
-    padding: 12px;
-  }
 }
 </style>
