@@ -21,38 +21,6 @@
             </div>
           </div>
           <Groups :inputValue="inputValue" :noti="noti" :url="url" />
-          <!-- <div class="d-flex">
-            <div>
-              <span>Notifications</span>
-              <div v-for="item in noti.list" :key="item.id">
-                <input
-                  v-model="inputValue.group.notiId"
-                  type="radio"
-                  :value="item.notiId"
-                />
-                <label> {{ item.message }}</label>
-              </div>
-            </div>
-            <div>
-              <span>Groups</span>
-              <div v-for="item in url.list" :key="item.id">
-                <input
-                  v-model="inputValue.group.urlId"
-                  type="radio"
-                  :value="item.urlId"
-                />
-                <label> {{ item.urlAlias }}</label>
-              </div>
-            </div>
-            <div>
-              <Textarea
-                v-model="inputValue.group.time"
-                title="Time"
-                placeholder="17:55"
-              />
-            </div>
-            <Button @click.native="postGroup" title="send" />
-          </div> -->
         </section>
 
         <div class="d-flex">
@@ -70,8 +38,8 @@
                 <Button @click.native="postNoti" title="Save" />
               </div>
               <br />
-              <Searchbar />
-              <div class="list-item" v-for="item in noti.list" :key="item.id">
+              <Searchbar v-model="filter.noti"/>
+              <div class="list-item" v-for="item in filterNotiList" :key="item.id">
                 {{ item.notiId }} | {{ item.message }}
               </div>
             </div>
@@ -98,8 +66,8 @@
                 <Button @click.native="postUrl" title="Save" />
               </div>
               <br />
-              <Searchbar />
-              <div class="list-item" v-for="item in url.list" :key="item.id">
+              <Searchbar v-model="filter.url"/>
+              <div class="list-item" v-for="item in filterUrlList" :key="item.id">
                 {{ item.urlId }} | {{ item.urlAlias }}<br />
                 {{ item.url }}
               </div>
@@ -132,6 +100,14 @@ export default {
     Button,
     Searchbar,
   },
+  computed: {
+    filterNotiList() {
+      return this.noti.list.filter(item => item.message.includes(this.filter.noti));
+    },
+    filterUrlList() {
+      return this.url.list.filter(item => item.urlAlias.includes(this.filter.url));
+    }
+  },
   data() {
     return {
       inputValue: {
@@ -160,6 +136,10 @@ export default {
       url: {
         list: [],
       },
+      filter: {
+        noti: '',
+        url: '',
+      }
     };
   },
   methods: {
@@ -174,7 +154,7 @@ export default {
           this.group.list = res.data.result;
         })
         .catch((err) => {
-          alert(err);
+          console.log(err);
         });
     },
     getNoti() {
@@ -184,7 +164,7 @@ export default {
           this.noti.list = res.data.result;
         })
         .catch((err) => {
-          alert(err);
+          console.log(err);
         });
     },
     getUrl() {
@@ -194,7 +174,7 @@ export default {
           this.url.list = res.data.result;
         })
         .catch((err) => {
-          alert(err);
+          console.log(err);
         });
     },
     postNoti() {
@@ -208,7 +188,7 @@ export default {
           }
         })
         .catch((err) => {
-          alert(err);
+           console.log(err);
         });
       this.inputValue.notiMsg = "";
     },
@@ -223,7 +203,7 @@ export default {
           }
         })
         .catch((err) => {
-          alert(err);
+           console.log(err);
         });
       this.inputValue.url.url = "";
       this.inputValue.url.urlAlias = "";
@@ -252,7 +232,7 @@ export default {
           }
         })
         .catch((err) => {
-          alert(err);
+           console.log(err);
         });
     },
     postGroup() {
@@ -270,22 +250,24 @@ export default {
 
 <style lang="scss" scoped>
 .main {
-  background-image: linear-gradient(
-    to right,
-    #051937,
-    #004d7a,
-    #008793,
-    #00bf72,
-    #a8eb12
-  );
-  i {
-    cursor: pointer;
-  }
+  // background-image: linear-gradient(
+  //   to right,
+  //   #051937,
+  //   #004d7a,
+  //   #008793,
+  //   #00bf72,
+  //   #a8eb12
+  // );
 }
 .container {
-  max-width: 750px;
+  max-width: 800px;
   min-height: 1000px;
   margin: auto;
-  padding: 150px 30px;
+  padding: 150px 60px;
+  background: white;
+  border: {
+    left :3px solid gray;
+    right: 3px solid gray;
+  }
 }
 </style>

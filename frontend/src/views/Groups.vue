@@ -37,7 +37,7 @@
             />
           </div>
         </div>
-        <Button @click.native="postGroup" title="send" />
+        <Button @click.native="postGroup" title="Send"/>
       </div>
     </div>
   </div>

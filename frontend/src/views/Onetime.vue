@@ -24,8 +24,8 @@
             <label> {{ item.urlAlias }}</label>
           </div>
         </div>
-        <Button @click.native="postOneTime" title="send" />
       </div>
+      <Button @click.native="postOneTime" title="Send" />
     </div>
   </section>
 </template>

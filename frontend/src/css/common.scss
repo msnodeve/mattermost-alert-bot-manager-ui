@@ -1,5 +1,23 @@
+// $color-primary: #051937 !default;
+// $color-secondary: #fefefe !default;
+// $color-font: #34495e !default;
+$blue: #2196F3!default;
+$blue-lighten-5:#E3F2FD!default;
+$blue-lighten-4:#BBDEFB!default;
+$blue-lighten-3:#90CAF9!default;
+$blue-lighten-2:#64B5F6!default;
+$blue-lighten-1:#42A5F5!default;
+$blue-darken-1:#1E88E5!default;
+$blue-darken-2:#1976D2!default;
+$blue-darken-3:#1565C0!default;
+$blue-darken-4: #0D47A1!default;
+
 * {
   box-sizing: border-box;
+}
+body {
+  margin: 0px;
+  background: url("../assets/pattern.png");
 }
 
 input {
@@ -52,7 +70,7 @@ i {
 .list {
   color: white;
   background: rgba(0, 0, 0, 0.4);
-  width: 45%;
+  width: 48%;
   min-height: 100px;
 
   padding: 30px;
@@ -79,9 +97,11 @@ i {
     display: flex;
     justify-content: space-between;
     // padding: 12px;
+    margin-bottom: 20px;
     h2 {
+      font-weight: 400;
+      line-height: 1.5;
       margin: 0;
-      margin-bottom: 15px;
     }
     input {
       height: 30px;
@@ -95,8 +115,11 @@ i {
     // color: black;
     background: rgba(0, 0, 0, 0.5);
     border-radius: 10px;
-    margin: 12px 0px;
-    padding: 12px;
+    margin: 10px 0px;
+    padding: 10px;
+  }
+  .list-content {
+    margin-bottom: 20px;
   }
 }
 

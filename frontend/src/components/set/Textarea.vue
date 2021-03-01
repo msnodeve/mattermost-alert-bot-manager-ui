@@ -36,8 +36,12 @@ export default {
     margin: 6px 0;
   }
   textarea {
+    // color: white;
+    background: rgb(235,235,235);
     width: 100%;
     resize: none;
+    border-radius: 4px;
+    padding: 4px;
   }
 }
 </style>
