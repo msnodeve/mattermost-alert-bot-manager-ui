@@ -1,8 +1,7 @@
 <template>
   <div class="searchbar">
-    <input type="text" :value=value @input="inputChange"/>
+    <input type="text" :value="value" @input="inputChange" />
     <i class="fas fa-search"></i>
-    
   </div>
 </template>
 
@@ -21,7 +20,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .searchbar {
   display: flex;
   position: relative;
@@ -37,7 +35,7 @@ export default {
     border-radius: 10px;
     padding-left: 30px;
   }
-  
+
   i {
     position: absolute;
     cursor: inherit;
@@ -46,6 +44,5 @@ export default {
     height: 12px;
     left: 8px;
   }
-
 }
 </style>

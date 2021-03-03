@@ -1,16 +1,16 @@
 // $color-primary: #051937 !default;
 // $color-secondary: #fefefe !default;
 // $color-font: #34495e !default;
-$blue: #2196F3!default;
-$blue-lighten-5:#E3F2FD!default;
-$blue-lighten-4:#BBDEFB!default;
-$blue-lighten-3:#90CAF9!default;
-$blue-lighten-2:#64B5F6!default;
-$blue-lighten-1:#42A5F5!default;
-$blue-darken-1:#1E88E5!default;
-$blue-darken-2:#1976D2!default;
-$blue-darken-3:#1565C0!default;
-$blue-darken-4: #0D47A1!default;
+$blue: #2196f3 !default;
+$blue-lighten-5: #e3f2fd !default;
+$blue-lighten-4: #bbdefb !default;
+$blue-lighten-3: #90caf9 !default;
+$blue-lighten-2: #64b5f6 !default;
+$blue-lighten-1: #42a5f5 !default;
+$blue-darken-1: #1e88e5 !default;
+$blue-darken-2: #1976d2 !default;
+$blue-darken-3: #1565c0 !default;
+$blue-darken-4: #0d47a1 !default;
 
 * {
   box-sizing: border-box;
@@ -55,7 +55,7 @@ i {
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  background-color: rgba(0, 0, 0, 0.6); /* Black w/ opacity */
 
   .modal-content {
     color: black;
@@ -64,17 +64,20 @@ i {
     padding: 30px;
     border: 1px solid #888;
     width: 700px; /* Could be more or less, depending on screen size */
+    i {
+      padding: 5px;
+    }
   }
 }
 
 .list {
   color: white;
-  background: rgba(0, 0, 0, 0.4);
-  width: 48%;
+  background: rgba(0, 0, 0, 0.6);
   min-height: 100px;
+  min-width: 400px;
 
-  padding: 30px;
-  margin-bottom: 50px;
+  padding: 40px;
+  margin: 60px 90px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 36px;
 
@@ -147,4 +150,11 @@ i {
     border-radius: 36px;
     margin: 6px;
   }
+}
+
+.description {
+  color: rgba(255, 255, 255, 0.9);
+  margin: 20px 0 30px 0;
+  padding: 10px;
+  font-weight: 500;
 }

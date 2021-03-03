@@ -2,13 +2,17 @@
   <section>
     <div class="list w-auto">
       <div class="list-title">
-        <h2>One-time Send</h2>
+        <h2>메시지 전송</h2>
       </div>
+      <p class="description">
+        매터모스트의 여러 채널에 같은 메시지를 '지금' 전송해보세요!<br />
+        메시지를 작성하고 전송하면 선택된 채널들에 메시지가 전송됩니다.<br />
+      </p>
       <div class="list-content">
         <div>
           <Textarea
             v-model="inputValue.onetime.message"
-            title="Message"
+            title="메시지"
             placeholder="[안내] 오전 live 방송 참여해주세요!"
             rows="6"
           />
@@ -25,7 +29,7 @@
           </div>
         </div>
       </div>
-      <Button @click.native="postOneTime" title="Send" />
+      <Button @click.native="postOneTime" title="저장" />
     </div>
   </section>
 </template>

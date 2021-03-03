@@ -5,10 +5,14 @@
         <h2>알림 설정</h2>
         <i @click="closeModal" id="button-close" class="fas fa-times"></i>
       </div>
+      <p class="description">
+        미리 설정해놓은 공지와 채널을 선택하고 시간을 입력해주세요! <br />
+        설정한 채널과 시간에 매일 알림이 전송됩니다!
+      </p>
       <div class="list-content">
-        <div class="d-flex">
-          <div>
-            <span>Notifications</span>
+        <div class="">
+          <div class="content">
+            <span>공지</span>
             <div v-for="item in noti.list" :key="item.id">
               <input
                 v-model="inputValue.group.notiId"
@@ -18,8 +22,8 @@
               <label> {{ item.message }}</label>
             </div>
           </div>
-          <div>
-            <span>Groups</span>
+          <div class="content">
+            <span>채널</span>
             <div v-for="item in url.list" :key="item.id">
               <input
                 v-model="inputValue.group.urlId"
@@ -29,15 +33,15 @@
               <label> {{ item.urlAlias }}</label>
             </div>
           </div>
-          <div>
+          <div class="content">
             <Textarea
               v-model="inputValue.group.time"
-              title="Time"
+              title="시간"
               placeholder="17:55"
             />
           </div>
         </div>
-        <Button @click.native="postGroup" title="Send"/>
+        <Button @click.native="postGroup" title="Send" />
       </div>
     </div>
   </div>
@@ -80,4 +84,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.content {
+  margin: 20px 0px;
+}
+.description {
+  color: black;
+}
 </style>
