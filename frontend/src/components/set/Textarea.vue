@@ -6,6 +6,7 @@
       @input="inputChange"
       :placeholder="placeholder"
       :rows="rows"
+      :style="`resize: ${resize}`"
     ></textarea>
   </div>
 </template>
@@ -18,6 +19,7 @@ export default {
     title: String,
     placeholder: String,
     rows: { type: String, default: "1" },
+    resize: { type: String, default: "none" },
   },
 
   methods: {
@@ -33,11 +35,18 @@ export default {
   margin: 5px 0;
 
   span {
-    margin: 6px 0;
+    margin: 10px 0;
   }
   textarea {
+    // color: white;
+    background: rgb(235, 235, 235);
     width: 100%;
-    resize: none;
+    // padding: 4px 10px 8px 10px;
+    padding: 6px 10px;
+    margin-top: 5px;
+    border-radius: 10px;
+
+    font-size: 1rem;
   }
 }
 </style>
