@@ -232,7 +232,13 @@ export default {
     },
     postNoti() {
       this.$axios
-        .post(API.NOTI, { message: this.inputValue.notiMsg })
+        .post(
+          API.NOTI,
+          { message: this.inputValue.notiMsg },
+          {
+            headers: { "X-AUTH-TOKEN": this.$cookies.get("token") },
+          }
+        )
         .then((res) => {
           if (res.status === 201) {
             alert("등록 되었습니다!");
@@ -247,7 +253,9 @@ export default {
     },
     postUrl() {
       this.$axios
-        .post(API.URL, this.inputValue.url)
+        .post(API.URL, this.inputValue.url, {
+          headers: { "X-AUTH-TOKEN": this.$cookies.get("token") },
+        })
         .then((res) => {
           if (res.status === 201) {
             alert("등록 되었습니다!");
@@ -290,7 +298,14 @@ export default {
     },
     postGroup() {
       this.$axios
-        .post(API.GROUP, {}, { params: this.inputValue.group })
+        .post(
+          API.GROUP,
+          {},
+          {
+            params: this.inputValue.group,
+            headers: { "X-AUTH-TOKEN": this.$cookies.get("token") },
+          }
+        )
         .then((res) => {
           if (res.status === 201) {
             alert(`Group 설정이 완료 되었습니다! \n `);
