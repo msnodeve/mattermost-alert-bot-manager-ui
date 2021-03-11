@@ -316,6 +316,7 @@ export default {
   }
   .logo {
     text-align: center;
+    padding-top: 50px;
   }
 }
 section {

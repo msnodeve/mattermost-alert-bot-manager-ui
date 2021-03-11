@@ -3,7 +3,7 @@
     <div class="modal-content list">
       <div class="list-title">
         <h2>알림 설정</h2>
-        <i @click="closeModal" id="button-close" class="fas fa-times"></i>
+        <i @click="closeModal" id="close-groups" class="fas fa-times"></i>
       </div>
       <p class="description">
         미리 설정해놓은 공지와 채널을 선택하고 시간을 입력해주세요! <br />
@@ -65,10 +65,10 @@ export default {
   },
   methods: {
     closeModal(event) {
-      const onetime = document.getElementById("modal-groups");
-      const bg = document.getElementById("button-close");
-      if ((event.target == onetime) | (event.target == bg))
-        onetime.style.display = "none";
+      const groups = document.getElementById("modal-groups");
+      const btn = document.getElementById("close-groups");
+      if ((event.target == groups) | (event.target == btn))
+        groups.style.display = "none";
     },
     postGroup() {
       this.$axios
