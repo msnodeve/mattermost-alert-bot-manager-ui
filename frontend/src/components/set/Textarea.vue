@@ -34,9 +34,6 @@ export default {
 .textarea {
   margin: 5px 0;
 
-  span {
-    margin: 10px 0;
-  }
   textarea {
     // color: white;
     background: rgb(235, 235, 235);

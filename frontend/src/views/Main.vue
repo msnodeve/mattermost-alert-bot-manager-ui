@@ -11,7 +11,7 @@
         <v-tab>채널 목록</v-tab>
         <v-tab-item>
           <div>
-            <Onetime :inputValue="inputValue" :url="url" />
+            <Onetime :url="url" />
           </div>
         </v-tab-item>
         <v-tab-item>
@@ -166,10 +166,7 @@ export default {
       inputValue: {
         notiMsg: "",
         url: { url: "", urlAlias: "" },
-        onetime: {
-          message: "",
-          urlIds: [],
-        },
+
         group: {
           time: "",
           notiId: 0,
@@ -269,33 +266,7 @@ export default {
       this.inputValue.url.url = "";
       this.inputValue.url.urlAlias = "";
     },
-    postOneTime() {
-      const qs = require("qs");
-      this.$axios
-        .post(
-          API.ONETIME,
-          {},
-          {
-            params: this.inputValue.onetime,
-            paramsSerializer: function (params) {
-              return qs.stringify(params, { arrayFormat: "repeat" });
-            },
-          }
-        )
-        .then((res) => {
-          if (res.status === 200) {
-            alert(
-              `ONE TIME 메시지가 전송 되었습니다! \n ${this.inputValue.onetime.message}`
-            );
-            // this.noti.list.push(res.data.result);
-            this.inputValue.onetime.message = "";
-            this.inputValue.onetime.urlIds = [];
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
+
     postGroup() {
       this.$axios
         .post(

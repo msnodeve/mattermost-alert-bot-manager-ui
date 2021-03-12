@@ -22,4 +22,10 @@ export default {
   /* text-align: center; */
   color: #2c3e50;
 }
+html,
+body,
+.v-application,
+.v-application--wrap {
+  min-height: -webkit-fill-available !important;
+}
 </style>
